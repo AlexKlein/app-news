@@ -1,5 +1,5 @@
 from django.contrib import admin
-from polls.models import News, Text
+from news.models import News, Text
 
 class TextInline(admin.TabularInline):
     model = Text

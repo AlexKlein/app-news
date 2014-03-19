@@ -1,6 +1,20 @@
-<h1>{{ poll.question }}</h1>
-<ul>
-{% for choice in poll.choice_set.all %}
-    <li>{{ choice.choice_text }}</li>
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'news/style.css' %}" />
+
+<h1>{{ news.title }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'news:reads' news.id %}" method="post">
+{% csrf_token %}
+{% for text in news.text_set.all %}
+    <input type="radio" name="text" id="text{{ forloop.counter }}" value="{{ text.id }}" />
+    <label for="text{{ forloop.counter }}">{{ text.news_text }}</label><br />
 {% endfor %}
-</ul>
+<input type="submit" value="View statistic" />
+</form>
+
+<a href="{% url 'news:index' %}">Look back</a>
+{% load staticfiles %}
+<img> url("static/news/images/putin.jpg")

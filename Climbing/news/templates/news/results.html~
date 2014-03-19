@@ -1,0 +1,13 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'news/style.css' %}" />
+
+<h1>{{ news.title }}</h1>
+
+<ul>
+{% for text in news.text_set.all %}
+    <li>{{ text.news_text }} -- {{ text.reads }} reads{{ text.reads|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'news:detail' news.id %}">Look back?</a>

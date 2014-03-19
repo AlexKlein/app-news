@@ -1,12 +1,18 @@
-<h1>{{ poll.question }}</h1>
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'news/style.css' %}" />
+
+<h1>{{ news.title }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'polls:vote' poll.id %}" method="post">
+<form action="{% url 'news:reads' news.id %}" method="post">
 {% csrf_token %}
-{% for choice in poll.choice_set.all %}
-    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+{% for text in news.text_set.all %}
+    <input type="radio" name="text" id="text{{ forloop.counter }}" value="{{ text.id }}" />
+    <label for="text{{ forloop.counter }}">{{ text.news_text }}</label><br />
 {% endfor %}
-<input type="submit" value="Vote" />
+<input type="submit" value="View statistic" />
 </form>
+
+<a href="{% url 'news:index' %}">Look back</a>

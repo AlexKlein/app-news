@@ -3,7 +3,10 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.utils import timezone
-from polls.models import News, Text
+from news.models import News, Text
+
+class StartView(generic.ListView):
+    template_name = 'start.html'
 
 class IndexView(generic.ListView):
     template_name = 'news/index.html'
