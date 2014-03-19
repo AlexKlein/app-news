@@ -1,0 +1,5 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'news/style.css' %}" />
+
+<a href="{% url 'news:index' %}">Go Forward</a>

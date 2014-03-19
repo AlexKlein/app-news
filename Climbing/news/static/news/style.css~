@@ -1,0 +1,8 @@
+table style {border: 5;
+li a {
+    color: black; text-align: center; font-size: 25;
+}
+}
+body {
+    background: white url("images/background.jpg") no-repeat top;
+}
