@@ -11,7 +11,7 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """
-        Return the last five published newa (not including those set to be
+        Return the last five published news (not including those set to be
         published in the future).
         """
         return News.objects.filter(
@@ -32,7 +32,7 @@ class ResultsView(generic.DetailView):
     model = News
     template_name = 'news/results.html'
 
-def read(request, news_id):
+def reads(request, news_id):
     p = get_object_or_404(News, pk=news_id)
     try:
         selected_text = p.text_set.get(pk=request.POST['text'])
@@ -43,7 +43,7 @@ def read(request, news_id):
             'error_message': "You didn't select a News.",
         })
     else:
-        selected_text.read += 1
+        selected_text.reads += 1
         selected_text.save()
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a

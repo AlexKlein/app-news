@@ -19,4 +19,4 @@ class Text(models.Model):
     news_text = models.CharField(max_length=200)
     reads = models.IntegerField(default=0)
     def __unicode__(self):
-        return self.choice_text
+        return self.news_text
